@@ -208,9 +208,9 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-white">
+    <div className="flex flex-col h-screen bg-[#121212]">
       {/* Header */}
-      <header className="flex justify-between items-center p-4 bg-gray-900 border-b border-gray-800">
+      <header className="flex justify-between items-center p-4 bg-[#000000] border-b border-gray-700">
         <div className="flex-1 flex justify-center items-center space-x-12">
           {/* Spotify */}
           <div className="p-2">
@@ -250,10 +250,10 @@ export default function HomePage() {
       {/* Main three-column layout */}
       <div className="flex flex-1 overflow-hidden">
         {/* Column 1: Playlists Navigation */}
-        <div className="w-64 border-r border-slate-200 flex flex-col overflow-hidden">
+        <div className="w-64 bg-[#121212] border-r border-gray-800 flex flex-col overflow-hidden">
           <div className="p-4 flex flex-col space-y-6">
             <div className="space-y-1">
-              <Button variant="ghost" className="w-full justify-start">
+              <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-white hover:bg-gray-800">
                 <Home className="h-4 w-4 mr-2" />
                 Home
               </Button>
@@ -304,8 +304,8 @@ export default function HomePage() {
         </div>
         
         {/* Column 2: Tracks Display */}
-        <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="p-6 bg-gradient-to-b from-primary/10 to-white">
+        <div className="flex-1 flex flex-col overflow-hidden bg-[#121212]">
+          <div className="p-6 bg-gradient-to-b from-[#535353] to-[#121212]">
             {currentPlaylist && (
               <div className="flex items-start space-x-6">
                 <div className="w-36 h-36 rounded-md overflow-hidden shadow-lg">
@@ -399,10 +399,10 @@ export default function HomePage() {
         </div>
         
         {/* Column 3: Recommendations */}
-        <div className="w-72 border-l border-slate-200 flex flex-col overflow-hidden">
-          <div className="p-4 bg-slate-50">
-            <h2 className="text-lg font-semibold mb-1">Recommended For You</h2>
-            <p className="text-xs text-slate-500">Based on your listening history</p>
+        <div className="w-72 border-l border-gray-800 flex flex-col overflow-hidden bg-[#121212]">
+          <div className="p-4 bg-[#181818]">
+            <h2 className="text-lg font-semibold mb-1 text-white">Recommended For You</h2>
+            <p className="text-xs text-gray-400">Based on what's in your playlists</p>
           </div>
           
           <ScrollArea className="flex-1">
@@ -457,7 +457,7 @@ export default function HomePage() {
       </div>
       
       {/* Music Player Controls (Bottom) */}
-      <div className="h-20 border-t border-slate-200 bg-white flex items-center px-4">
+      <div className="h-20 border-t border-gray-800 bg-[#181818] flex items-center px-4">
         {/* Track info */}
         <div className="flex items-center w-72">
           {currentTrack ? (
