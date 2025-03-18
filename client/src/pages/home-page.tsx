@@ -39,7 +39,7 @@ const TrackItem = ({
       <Avatar className="h-10 w-10 rounded-md">
         <AvatarImage src={track.coverImage || ''} alt={track.title} />
         <AvatarFallback className="rounded-md bg-slate-300">
-          {track.title.substring(0, 2)}
+          {track.title ? track.title.substring(0, 2) : '♪'}
         </AvatarFallback>
       </Avatar>
       <div className="flex-1 min-w-0">
@@ -109,8 +109,8 @@ export default function HomePage() {
     isLoading: isLoadingPlaylists 
   } = useQuery<Playlist[]>({
     queryKey: ['/api/playlists'],
-    queryFn: getQueryFn({}),
-    onError: (error) => {
+    queryFn: getQueryFn({ on401: "throw" }),
+    onError: (error: Error) => {
       toast({
         title: "Error loading playlists",
         description: error.message,
@@ -125,9 +125,9 @@ export default function HomePage() {
     isLoading: isLoadingTracks 
   } = useQuery<Track[]>({
     queryKey: ['/api/playlists', currentPlaylist?.id, 'tracks'],
-    queryFn: currentPlaylist ? getQueryFn({}) : () => Promise.resolve([]),
+    queryFn: currentPlaylist ? getQueryFn({ on401: "throw" }) : () => Promise.resolve([]),
     enabled: !!currentPlaylist,
-    onError: (error) => {
+    onError: (error: Error) => {
       toast({
         title: "Error loading tracks",
         description: error.message,
@@ -142,8 +142,8 @@ export default function HomePage() {
     isLoading: isLoadingRecommendations 
   } = useQuery<Track[]>({
     queryKey: ['/api/recommendations'],
-    queryFn: getQueryFn({}),
-    onError: (error) => {
+    queryFn: getQueryFn({ on401: "throw" }),
+    onError: (error: Error) => {
       console.error("Failed to load recommendations:", error);
       // Don't show error toast for recommendations as they're not critical
     }
@@ -360,7 +360,7 @@ export default function HomePage() {
                       <Avatar className="h-10 w-10 rounded-md">
                         <AvatarImage src={track.coverImage || ''} alt={track.title} />
                         <AvatarFallback className="rounded-md bg-slate-300">
-                          {track.title.substring(0, 2)}
+                          {track.title ? track.title.substring(0, 2) : '♪'}
                         </AvatarFallback>
                       </Avatar>
                       <div>
@@ -448,7 +448,7 @@ export default function HomePage() {
               <Avatar className="h-12 w-12 rounded-md mr-3">
                 <AvatarImage src={currentTrack.coverImage || ''} alt={currentTrack.title} />
                 <AvatarFallback className="rounded-md bg-slate-300">
-                  {currentTrack.title.substring(0, 2)}
+                  {currentTrack.title ? currentTrack.title.substring(0, 2) : '♪'}
                 </AvatarFallback>
               </Avatar>
               <div>
