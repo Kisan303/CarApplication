@@ -33,7 +33,7 @@ const TrackItem = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className={`flex items-center space-x-3 p-2 rounded-md cursor-pointer hover:bg-slate-100 ${isActive ? 'bg-slate-100' : ''}`}
+      className={`flex items-center space-x-3 p-2 rounded-md cursor-pointer hover:bg-gray-800 ${isActive ? 'bg-gray-700' : ''}`}
       onClick={onSelect}
     >
       <Avatar className="h-10 w-10 rounded-md">
@@ -68,7 +68,7 @@ const PlaylistItem = ({
       initial={{ opacity: 0, y: 5 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      className={`flex items-center space-x-3 p-2 rounded-md cursor-pointer hover:bg-slate-100 ${isActive ? 'bg-slate-100' : ''}`}
+      className={`flex items-center space-x-3 p-2 rounded-md cursor-pointer hover:bg-gray-800 ${isActive ? 'bg-gray-700' : ''}`}
       onClick={onSelect}
     >
       <Avatar className="h-10 w-10 rounded-md">
@@ -97,13 +97,13 @@ const formatDuration = (seconds: number | null): string => {
 export default function HomePage() {
   const { user, logoutMutation } = useAuth();
   const { toast } = useToast();
-  
+
   // State for music player
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [currentPlaylist, setCurrentPlaylist] = useState<Playlist | null>(null);
   const [playbackProgress, setPlaybackProgress] = useState(0);
-  
+
   // Fetch playlists
   const { 
     data: playlists = [], 
@@ -119,7 +119,7 @@ export default function HomePage() {
       });
     }
   });
-  
+
   // Fetch tracks for the selected playlist
   const { 
     data: playlistTracks = [], 
@@ -136,7 +136,7 @@ export default function HomePage() {
       });
     }
   });
-  
+
   // Fetch recommendations
   const { 
     data: recommendations = [], 
@@ -149,31 +149,31 @@ export default function HomePage() {
       // Don't show error toast for recommendations as they're not critical
     }
   });
-  
+
   // Set initial playlist when data loads
   useEffect(() => {
     if (playlists.length > 0 && !currentPlaylist) {
       setCurrentPlaylist(playlists[0]);
     }
   }, [playlists, currentPlaylist]);
-  
+
   // Play/Pause handler
   const togglePlayback = () => {
     setIsPlaying(!isPlaying);
-    
+
     // In a real app, this would control actual audio playback
     if (!isPlaying && !currentTrack && playlistTracks.length > 0) {
       setCurrentTrack(playlistTracks[0]);
     }
   };
-  
+
   // Track selection handler
   const handleTrackSelect = (track: Track) => {
     setCurrentTrack(track);
     setIsPlaying(true);
     setPlaybackProgress(0);
   };
-  
+
   // Playlist selection handler
   const handlePlaylistSelect = (playlist: Playlist) => {
     setCurrentPlaylist(playlist);
@@ -181,11 +181,11 @@ export default function HomePage() {
     setPlaybackProgress(0);
     setIsPlaying(false);
   };
-  
+
   // Simulate playback progress
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    
+
     if (isPlaying && currentTrack) {
       interval = setInterval(() => {
         setPlaybackProgress(prev => {
@@ -198,10 +198,10 @@ export default function HomePage() {
         });
       }, 1000);
     }
-    
+
     return () => clearInterval(interval);
   }, [isPlaying, currentTrack]);
-  
+
   // Logout handler
   const handleLogout = () => {
     logoutMutation.mutate();
@@ -246,7 +246,7 @@ export default function HomePage() {
           </Button>
         </div>
       </header>
-      
+
       {/* Main three-column layout */}
       <div className="flex flex-1 overflow-hidden">
         {/* Column 1: Playlists Navigation */}
@@ -266,7 +266,7 @@ export default function HomePage() {
                 Your Library
               </Button>
             </div>
-            
+
             <div className="space-y-1">
               <Button variant="ghost" className="w-full justify-start">
                 <Plus className="h-4 w-4 mr-2" />
@@ -278,11 +278,11 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
-          
+
           <Separator />
-          
+
           <div className="p-3 text-sm font-medium text-slate-700">Your Playlists</div>
-          
+
           <ScrollArea className="flex-1">
             <div className="p-2 space-y-1">
               {isLoadingPlaylists ? (
@@ -302,7 +302,7 @@ export default function HomePage() {
             </div>
           </ScrollArea>
         </div>
-        
+
         {/* Column 2: Tracks Display */}
         <div className="flex-1 flex flex-col overflow-hidden bg-[#121212]">
           <div className="p-6 bg-gradient-to-b from-[#535353] to-[#121212]">
@@ -328,7 +328,7 @@ export default function HomePage() {
               </div>
             )}
           </div>
-          
+
           <div className="p-4 flex items-center space-x-4">
             <Button 
               size="icon" 
@@ -345,16 +345,16 @@ export default function HomePage() {
               <Heart className="h-5 w-5" />
             </Button>
           </div>
-          
+
           <Separator />
-          
+
           <div className="flex px-6 py-2 text-sm font-medium text-slate-500">
             <div className="w-8">#</div>
             <div className="flex-1">Title</div>
             <div className="w-32">Album</div>
             <div className="w-24 text-right">Duration</div>
           </div>
-          
+
           <ScrollArea className="flex-1">
             <div className="px-2">
               {isLoadingTracks ? (
@@ -369,7 +369,7 @@ export default function HomePage() {
                 playlistTracks.map((track, index) => (
                   <div 
                     key={track.id}
-                    className={`flex items-center px-4 py-2 rounded-md hover:bg-slate-100 ${currentTrack?.id === track.id ? 'bg-slate-100' : ''}`}
+                    className={`flex items-center px-4 py-2 rounded-md hover:bg-gray-800 ${currentTrack?.id === track.id ? 'bg-gray-700' : ''}`}
                     onClick={() => handleTrackSelect(track)}
                   >
                     <div className="w-8 text-slate-400">{index + 1}</div>
@@ -381,14 +381,14 @@ export default function HomePage() {
                         </AvatarFallback>
                       </Avatar>
                       <div>
-                        <div className={`font-medium ${currentTrack?.id === track.id ? 'text-primary' : ''}`}>
+                        <div className={`font-medium text-gray-200 ${currentTrack?.id === track.id ? 'text-primary' : ''}`}>
                           {track.title}
                         </div>
-                        <div className="text-sm text-slate-500">{track.artist}</div>
+                        <div className="text-sm text-gray-400">{track.artist}</div>
                       </div>
                     </div>
-                    <div className="w-32 text-sm text-slate-500 truncate">{track.album}</div>
-                    <div className="w-24 text-right text-sm text-slate-500">
+                    <div className="w-32 text-sm text-gray-400 truncate">{track.album}</div>
+                    <div className="w-24 text-right text-sm text-gray-400">
                       {formatDuration(track.duration)}
                     </div>
                   </div>
@@ -397,14 +397,14 @@ export default function HomePage() {
             </div>
           </ScrollArea>
         </div>
-        
+
         {/* Column 3: Recommendations */}
         <div className="w-72 border-l border-gray-800 flex flex-col overflow-hidden bg-[#121212]">
           <div className="p-4 bg-[#181818]">
             <h2 className="text-lg font-semibold mb-1 text-white">Recommended For You</h2>
             <p className="text-xs text-gray-400">Based on what's in your playlists</p>
           </div>
-          
+
           <ScrollArea className="flex-1">
             <div className="p-3 space-y-2">
               {isLoadingRecommendations ? (
@@ -438,7 +438,7 @@ export default function HomePage() {
               )}
             </div>
           </ScrollArea>
-          
+
           <div className="p-4 border-t border-slate-200">
             <Tabs defaultValue="discover">
               <TabsList className="w-full">
@@ -466,7 +466,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      
+
       {/* Music Player Controls (Bottom) */}
       <div className="h-20 border-t border-gray-800 bg-[#181818] flex items-center px-4">
         {/* Track info */}
@@ -491,7 +491,7 @@ export default function HomePage() {
             <div className="text-sm text-slate-500">No track selected</div>
           )}
         </div>
-        
+
         {/* Playback controls */}
         <div className="flex-1 flex flex-col items-center justify-center">
           <div className="flex items-center space-x-4">
@@ -519,7 +519,7 @@ export default function HomePage() {
               <Repeat className="h-4 w-4" />
             </Button>
           </div>
-          
+
           {currentTrack && (
             <div className="w-full max-w-md flex items-center space-x-2 mt-1">
               <span className="text-xs text-slate-500">
@@ -535,7 +535,7 @@ export default function HomePage() {
             </div>
           )}
         </div>
-        
+
         {/* Volume controls */}
         <div className="w-64 flex items-center justify-end space-x-3">
           <Button variant="ghost" size="icon">
