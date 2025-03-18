@@ -393,7 +393,6 @@ export default function HomePage() {
                 ))
               )}
             </div>
-          </div>
         </div>
 
         {/* Column 3: Recommendations */}
