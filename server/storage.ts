@@ -133,17 +133,29 @@ export class PostgresStorage implements IStorage {
   }
   
   async getTracksByPlaylistId(playlistId: number): Promise<Track[]> {
-    const query = this.db
-      .select({
-        track: tracks
-      })
-      .from(playlistTracks)
-      .innerJoin(tracks, eq(playlistTracks.trackId, tracks.id))
-      .where(eq(playlistTracks.playlistId, playlistId))
-      .orderBy(asc(playlistTracks.position));
+    // Dummy tracks based on playlist ID
+    const dummyTracks: Track[] = [
+      { id: playlistId * 100 + 1, title: "Blue Bird", artist: "IKIMONO-GAKARI", album: "Bleach OST", duration: 240, coverImage: "https://i.imgur.com/1.jpg" },
+      { id: playlistId * 100 + 2, title: "Dynamite", artist: "BTS", album: "BE", duration: 199, coverImage: "https://i.imgur.com/2.jpg" },
+      { id: playlistId * 100 + 3, title: "Butter", artist: "BTS", album: "Butter", duration: 164, coverImage: "https://i.imgur.com/3.jpg" },
+      { id: playlistId * 100 + 4, title: "How You Like That", artist: "BLACKPINK", album: "THE ALBUM", duration: 182, coverImage: "https://i.imgur.com/4.jpg" },
+      { id: playlistId * 100 + 5, title: "Spring Day", artist: "BTS", album: "You Never Walk Alone", duration: 285, coverImage: "https://i.imgur.com/5.jpg" }
+    ];
     
-    const results = await query;
-    return results.map(r => r.track);
+    // For real implementation:
+    // const query = this.db
+    //   .select({
+    //     track: tracks
+    //   })
+    //   .from(playlistTracks)
+    //   .innerJoin(tracks, eq(playlistTracks.trackId, tracks.id))
+    //   .where(eq(playlistTracks.playlistId, playlistId))
+    //   .orderBy(asc(playlistTracks.position));
+    
+    // const results = await query;
+    // return results.map(r => r.track);
+    
+    return dummyTracks;
   }
   
   // Recommendations
