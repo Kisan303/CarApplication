@@ -1,4 +1,3 @@
-
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -390,9 +389,11 @@ export default function HomePage() {
                         {formatDuration(track.duration)}
                       </div>
                     </div>
+                  </div>
                 ))
               )}
-          </div>
+            </div>
+          </ScrollArea>
         </div>
 
         {/* Column 3: Recommendations */}
