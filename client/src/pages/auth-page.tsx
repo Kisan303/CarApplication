@@ -104,7 +104,7 @@ export default function AuthPage() {
       </div>
 
       {/* Right Side - Auth Form */}
-      <div className="md:w-1/2 flex flex-col justify-center items-center p-8">
+      <div className="md:w-1/2 flex flex-col justify-center items-center p-8 bg-white shadow-xl">
         <div className="w-full max-w-md">
           <AnimatePresence mode="wait">
             {isLogin ? (
