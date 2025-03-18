@@ -1,3 +1,6 @@
+
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -392,7 +395,7 @@ export default function HomePage() {
                 ))
               )}
             </div>
-          </ScrollArea>
+          </div>
         </div>
 
         {/* Column 3: Recommendations */}
