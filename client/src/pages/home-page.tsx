@@ -210,21 +210,32 @@ export default function HomePage() {
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Header */}
-      <header className="flex justify-between items-center p-4 border-b border-slate-200">
-        <div className="flex items-center space-x-3">
-          <div className="bg-primary p-2 rounded-full shadow-sm">
-            <Music className="h-5 w-5 text-white" />
+      <header className="flex justify-between items-center p-4 bg-gray-900 border-b border-gray-800">
+        <div className="flex items-center space-x-6">
+          <div className="p-2">
+            <svg className="h-8 w-8 text-green-500" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.8-.179-.92-.601-.122-.418.18-.8.6-.92 4.56-1.021 8.52-.6 11.64 1.32.42.24.48.66.24 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
           </div>
-          <h1 className="text-xl font-bold text-slate-900">CarDJ</h1>
+          <div className="flex-1 flex justify-center">
+            <svg className="h-8 w-24 text-white" viewBox="0 0 100 24" fill="currentColor">
+              <path d="M11.57 0c-.97 0-2.21.26-3.27.87-1.69.97-2.49 2.47-2.49 4.09 0 2.08 1.3 3.31 2.73 4.02l1.95.97c1.3.65 2.47 1.3 2.47 2.73 0 1.43-1.17 2.34-2.73 2.34-1.56 0-2.47-.78-3.12-1.69l-1.95 1.17c.91 1.69 2.73 2.86 5.07 2.86 2.6 0 4.93-1.56 4.93-4.15 0-2.08-1.3-3.31-2.73-4.02l-1.95-.97c-1.3-.65-2.47-1.3-2.47-2.73 0-1.43 1.17-2.34 2.73-2.34 1.56 0 2.47.78 3.12 1.69l1.95-1.17C14.83 1.17 13.01 0 11.57 0zM24.7 0c-2.6 0-4.93 1.56-4.93 4.15 0 2.08 1.3 3.31 2.73 4.02l1.95.97c1.3.65 2.47 1.3 2.47 2.73 0 1.43-1.17 2.34-2.73 2.34-1.56 0-2.47-.78-3.12-1.69l-1.95 1.17c.91 1.69 2.73 2.86 5.07 2.86 2.6 0 4.93-1.56 4.93-4.15 0-2.08-1.3-3.31-2.73-4.02l-1.95-.97c-1.3-.65-2.47-1.3-2.47-2.73 0-1.43 1.17-2.34 2.73-2.34 1.56 0 2.47.78 3.12 1.69l1.95-1.17C27.96 1.17 26.14 0 24.7 0z"/>
+            </svg>
+          </div>
+          <div className="p-2">
+            <svg className="h-8 w-8 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.88 17.52c-.12.18-.36.24-.54.12-3.48-2.12-7.86-2.6-13.02-1.42-.18.06-.36-.06-.42-.24-.06-.18.06-.36.24-.42 5.64-1.28 10.38-.73 14.16 1.58.18.12.24.36.12.54zm1.56-3.48c-.12.24-.42.3-.66.18-3.98-2.44-10.02-3.16-14.76-1.72-.24.06-.48-.06-.54-.3-.06-.24.06-.48.3-.54 5.34-1.62 11.88-.84 16.38 1.86.24.12.3.42.18.66zm.18-3.6c-4.8-2.82-12.6-3.06-17.16-1.68-.36.12-.72-.06-.84-.42-.12-.36.06-.72.42-.84 5.22-1.56 13.86-1.26 19.26 1.98.3.18.42.6.24.9-.18.3-.6.42-.9.24z"/>
+            </svg>
+          </div>
         </div>
-        <div className="flex items-center space-x-2">
-          <div className="flex items-center space-x-2 mr-4">
-            <Avatar className="h-8 w-8">
-              <AvatarFallback>{user?.username?.[0]?.toUpperCase()}</AvatarFallback>
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
+            <Avatar className="h-8 w-8 ring-2 ring-primary">
+              <AvatarFallback className="bg-gray-800 text-white">{user?.username?.[0]?.toUpperCase()}</AvatarFallback>
             </Avatar>
-            <span className="text-sm font-medium">{user?.username}</span>
+            <span className="text-sm font-medium text-white">{user?.username}</span>
           </div>
-          <Button variant="ghost" size="sm" onClick={handleLogout} className="flex items-center gap-2">
+          <Button variant="ghost" size="sm" onClick={handleLogout} className="text-gray-400 hover:text-white flex items-center gap-2">
             <LogOut className="h-4 w-4" />
             <span className="hidden sm:inline">Sign Out</span>
           </Button>
