@@ -115,8 +115,8 @@ export default function AuthPage() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
               >
-                <Card className="border-0 shadow-none">
-                  <CardContent className="pt-6">
+                <Card className="border-0 shadow-none bg-white">
+                  <CardContent className="pt-6 bg-white">
                     <div className="mb-8 text-center">
                       <h2 className="text-3xl font-bold mb-1">Sign In</h2>
                       <div className="w-16 h-1 bg-primary mx-auto rounded-full"></div>
@@ -131,7 +131,7 @@ export default function AuthPage() {
                             <FormItem>
                               <FormLabel>Email</FormLabel>
                               <FormControl>
-                                <Input placeholder="email@example.com" {...field} />
+                                <Input placeholder="email@example.com" className="bg-white text-black" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -145,7 +145,7 @@ export default function AuthPage() {
                             <FormItem>
                               <FormLabel>Password</FormLabel>
                               <FormControl>
-                                <Input type="password" {...field} />
+                                <Input type="password" className="bg-white text-black" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -215,8 +215,8 @@ export default function AuthPage() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
               >
-                <Card className="border-0 shadow-none">
-                  <CardContent className="pt-6">
+                <Card className="border-0 shadow-none bg-white">
+                  <CardContent className="pt-6 bg-white">
                     <div className="mb-8 text-center">
                       <h2 className="text-3xl font-bold mb-1">Sign Up</h2>
                       <div className="w-16 h-1 bg-primary mx-auto rounded-full"></div>
@@ -231,13 +231,13 @@ export default function AuthPage() {
                             <FormItem>
                               <FormLabel>Username</FormLabel>
                               <FormControl>
-                                <Input placeholder="username" {...field} />
+                                <Input placeholder="username" className="bg-white text-black" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
                           )}
                         />
-                        
+
                         <FormField
                           control={registerForm.control}
                           name="email"
@@ -245,7 +245,7 @@ export default function AuthPage() {
                             <FormItem>
                               <FormLabel>Email</FormLabel>
                               <FormControl>
-                                <Input placeholder="email@example.com" {...field} />
+                                <Input placeholder="email@example.com" className="bg-white text-black" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -259,7 +259,7 @@ export default function AuthPage() {
                             <FormItem>
                               <FormLabel>Password</FormLabel>
                               <FormControl>
-                                <Input type="password" {...field} />
+                                <Input type="password" className="bg-white text-black" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -273,7 +273,7 @@ export default function AuthPage() {
                             <FormItem>
                               <FormLabel>Confirm Password</FormLabel>
                               <FormControl>
-                                <Input type="password" {...field} />
+                                <Input type="password" className="bg-white text-black" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
