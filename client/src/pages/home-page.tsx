@@ -359,10 +359,10 @@ export default function HomePage() {
             <div className="px-2">
               {isLoadingTracks ? (
                 Array(10).fill(0).map((_, i) => (
-                  <div key={i} className="h-14 mx-2 my-1 rounded-md bg-slate-100 animate-pulse" />
+                  <div key={i} className="h-14 mx-2 my-1 rounded-md bg-gray-800 animate-pulse" />
                 ))
               ) : playlistTracks.length === 0 ? (
-                <div className="text-center py-12 text-slate-500">
+                <div className="text-center py-12 text-gray-400">
                   This playlist is empty
                 </div>
               ) : (
@@ -372,16 +372,27 @@ export default function HomePage() {
                     className={`flex items-center px-4 py-2 rounded-md hover:bg-gray-800 ${currentTrack?.id === track.id ? 'bg-gray-700' : ''}`}
                     onClick={() => handleTrackSelect(track)}
                   >
-                    <div className="w-8 text-slate-400">{index + 1}</div>
+                    <div className="w-8 text-gray-400">{index + 1}</div>
                     <div className="flex-1 flex items-center space-x-3">
                       <Avatar className="h-10 w-10 rounded-md">
                         <AvatarImage src={track.coverImage || ''} alt={track.title} />
-                        <AvatarFallback className="rounded-md bg-slate-300">
+                        <AvatarFallback className="rounded-md bg-gray-800">
                           {track.title ? track.title.substring(0, 2) : '♪'}
                         </AvatarFallback>
                       </Avatar>
-                      <div>
-                        <div className={`font-medium text-gray-200 ${currentTrack?.id === track.id ? 'text-primary' : ''}`}>
+                      <div className="min-w-0 flex-1">
+                        <div className="font-medium text-gray-200 truncate">{track.title}</div>
+                        <div className="text-sm text-gray-400 truncate">{track.artist}</div>
+                      </div>
+                      <div className="w-32 text-sm text-gray-400 truncate">{track.album}</div>
+                      <div className="w-20 text-right text-sm text-gray-400">
+                        {formatDuration(track.duration)}
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div> ''}`}>
                           {track.title}
                         </div>
                         <div className="text-sm text-gray-400">{track.artist}</div>
