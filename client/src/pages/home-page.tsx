@@ -195,11 +195,22 @@ export default function HomePage() {
   };
 
   // Playlist selection handler
-  const handlePlaylistSelect = (playlist: Playlist) => {
-    setCurrentPlaylist(playlist);
-    setCurrentTrack(null);
-    setPlaybackProgress(0);
-    setIsPlaying(false);
+  const handlePlaylistSelect = async (playlist: Playlist) => {
+    try {
+      const response = await fetch(`/api/playlists/${playlist.id}/tracks`);
+      if (!response.ok) throw new Error('Failed to fetch playlist tracks');
+      const tracks = await response.json();
+      setCurrentPlaylist({ ...playlist, tracks });
+      setCurrentTrack(null);
+      setPlaybackProgress(0);
+      setIsPlaying(false);
+    } catch (error) {
+      toast({
+        title: "Error loading playlist",
+        description: "Failed to load playlist tracks",
+        variant: "destructive",
+      });
+    }
   };
 
   // Simulate playback progress
@@ -424,12 +435,8 @@ export default function HomePage() {
                       className="h-14 mx-2 my-1 rounded-md bg-gray-800 animate-pulse"
                     />
                   ))
-              ) : playlistTracks.length === 0 ? (
-                <div className="text-center py-12 text-gray-400">
-                  This playlist is empty
-                </div>
-              ) : (
-                playlistTracks.map((track, index) => (
+              ) : currentPlaylist?.tracks && currentPlaylist.tracks.length > 0 ? (
+                currentPlaylist.tracks.map((track, index) => (
                   <div
                     key={track.id}
                     className={`flex items-center px-4 py-2 rounded-md hover:bg-gray-800 ${currentTrack?.id === track.id ? "bg-gray-700" : ""}`}
