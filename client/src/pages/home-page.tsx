@@ -409,20 +409,31 @@ export default function HomePage() {
             <div className="p-3 space-y-2">
               {isLoadingRecommendations ? (
                 Array(5).fill(0).map((_, i) => (
-                  <div key={i} className="h-14 rounded-md bg-slate-100 animate-pulse" />
+                  <div key={i} className="h-14 rounded-md bg-gray-800 animate-pulse" />
                 ))
               ) : recommendations.length === 0 ? (
-                <div className="text-center py-8 text-slate-500 text-sm">
+                <div className="text-center py-8 text-gray-400 text-sm">
                   No recommendations available
                 </div>
               ) : (
-                recommendations.map(track => (
-                  <TrackItem 
-                    key={track.id} 
-                    track={track}
-                    isActive={currentTrack?.id === track.id}
-                    onSelect={() => handleTrackSelect(track)}
-                  />
+                recommendations.filter(track => 
+                  !currentPlaylist?.tracks?.some(pt => pt.id === track.id)
+                ).map(track => (
+                  <div 
+                    key={track.id}
+                    className={`flex items-center p-2 rounded-md hover:bg-gray-800 cursor-pointer ${
+                      currentTrack?.id === track.id ? 'bg-gray-700' : ''
+                    }`}
+                    onClick={() => handleTrackSelect(track)}
+                  >
+                    <div className="flex-1 min-w-0">
+                      <div className="text-gray-200 font-medium truncate">{track.title}</div>
+                      <div className="text-gray-400 text-sm truncate">{track.artist}</div>
+                    </div>
+                    <div className="text-gray-400 text-sm ml-2">
+                      {formatDuration(track.duration)}
+                    </div>
+                  </div>
                 ))
               )}
             </div>
