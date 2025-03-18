@@ -226,6 +226,20 @@ export default function AuthPage() {
                       <form onSubmit={registerForm.handleSubmit(onRegisterSubmit)} className="space-y-6">
                         <FormField
                           control={registerForm.control}
+                          name="username"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Username</FormLabel>
+                              <FormControl>
+                                <Input placeholder="username" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={registerForm.control}
                           name="email"
                           render={({ field }) => (
                             <FormItem>

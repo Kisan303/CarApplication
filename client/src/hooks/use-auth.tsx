@@ -53,7 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const registerMutation = useMutation({
     mutationFn: async (credentials: RegisterUser) => {
       const userData: InsertUser = {
-        username: credentials.email.split('@')[0], // Generate username from email
+        username: credentials.username,
         email: credentials.email,
         password: credentials.password
       };
