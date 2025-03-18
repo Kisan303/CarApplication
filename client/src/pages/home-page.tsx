@@ -291,7 +291,7 @@ export default function HomePage() {
       {/* Main three-column layout */}
       <div className="flex flex-1 overflow-hidden">
         {/* Column 1: Playlists Navigation */}
-        <div className="w-64 bg-white border-r border-gray-200 flex flex-col overflow-hidden">
+        <div className="w-64 bg-[#121212] border-r border-gray-800 flex flex-col overflow-hidden">
           <div className="p-4 flex flex-col space-y-6">
             <div className="space-y-1">
               <Button
