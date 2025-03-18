@@ -384,18 +384,12 @@ export default function HomePage() {
                         <div className="font-medium text-gray-200 truncate">{track.title}</div>
                         <div className="text-sm text-gray-400 truncate">{track.artist}</div>
                       </div>
-                    </div>
-                    <div className="w-32 text-sm text-gray-400 truncate">{track.album}</div>
-                    <div className="w-24 text-right text-sm text-gray-400">
-                      {Math.floor(track.duration / 60)}:{(track.duration % 60).toString().padStart(2, '0')}
-                    </div>
-                  </div>
-                ))
-                        <div className="text-sm text-gray-400 truncate">{track.artist}</div>
-                      </div>
                       <div className="w-32 text-sm text-gray-400 truncate">{track.album}</div>
                       <div className="w-20 text-right text-sm text-gray-400">
                         {formatDuration(track.duration)}
+                      </div>
+                    </div>
+                ))
                       </div>
                     </div>
                   </div>
