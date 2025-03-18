@@ -392,13 +392,12 @@ export default function HomePage() {
                   </div>
                 ))
               )}
-            </div>}>
+            </div> ''}`}>
                           {track.title}
                         </div>
                         <div className="text-sm text-gray-400">{track.artist}</div>
                       </div>
                     </div>
-                  </ScrollArea>
                   </ScrollArea>
                     <div className="w-32 text-sm text-gray-400 truncate">{track.album}</div>
                     <div className="w-24 text-right text-sm text-gray-400">
