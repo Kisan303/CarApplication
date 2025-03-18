@@ -470,6 +470,10 @@ export default function HomePage() {
                     </div>
                   </div>
                 ))
+              ) : (
+                <div className="text-center py-8 text-gray-400 text-sm">
+                  No tracks in this playlist.
+                </div>
               )}
             </div>
           </ScrollArea>
@@ -642,7 +646,7 @@ export default function HomePage() {
               <span className="text-xs text-slate-500">
                 {formatDuration(currentTrack.duration)}
               </span>
-            </div>
+            </</div>
           )}
         </div>
 
