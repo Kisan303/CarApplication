@@ -74,7 +74,7 @@ const PlaylistItem = ({
       <Avatar className="h-10 w-10 rounded-md">
         <AvatarImage src={playlist.coverImage || ''} alt={playlist.name} />
         <AvatarFallback className="rounded-md bg-primary/20">
-          {playlist.name.substring(0, 2)}
+          {playlist.name ? playlist.name.substring(0, 2) : 'PL'}
         </AvatarFallback>
       </Avatar>
       <div className="flex-1 min-w-0">
@@ -86,7 +86,8 @@ const PlaylistItem = ({
 };
 
 // Format seconds to mm:ss
-const formatDuration = (seconds: number): string => {
+const formatDuration = (seconds: number | null): string => {
+  if (seconds === null) return '0:00';
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
   return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
