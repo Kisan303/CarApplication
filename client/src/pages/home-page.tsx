@@ -398,7 +398,6 @@ export default function HomePage() {
                         <div className="text-sm text-gray-400">{track.artist}</div>
                       </div>
                     </div>
-                  </ScrollArea>
                     <div className="w-32 text-sm text-gray-400 truncate">{track.album}</div>
                     <div className="w-24 text-right text-sm text-gray-400">
                       {formatDuration(track.duration)}
