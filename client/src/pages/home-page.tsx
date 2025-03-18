@@ -646,7 +646,7 @@ export default function HomePage() {
               <span className="text-xs text-slate-500">
                 {formatDuration(currentTrack.duration)}
               </span>
-            </</div>
+            </div>
           )}
         </div>
 
